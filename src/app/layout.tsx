@@ -1,5 +1,10 @@
-import "../styles/global.css";
-import { GlobalProvider } from "@/lib/context/GlobalContext";
+import { GlobalProvider } from "@/utils/supabase/context/GlobalContext";
+import "@/styles/global.css";
+
+export const metadata = {
+  title: "TerraGreen - Landeigentümer Verwaltung",
+  description: "Verwaltung von Landeigentümern und Flurstücken",
+};
 
 export default function RootLayout({
   children,
@@ -8,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de-DE" dir="ltr">
-      <body
-        className=" font-body bg-white  selection:bg-primary-200  "
-      >
+      <body className="font-body bg-white selection:bg-primary-200">
         <GlobalProvider>
           {children}
         </GlobalProvider>

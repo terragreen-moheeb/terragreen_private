@@ -1,5 +1,6 @@
 import Header from '@/components/common/Header'
-import { getButtonClasses } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/utils/utils'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -20,8 +21,8 @@ export default function NotFound() {
         <div className="space-y-1">
           <Link
             href="/"
+                    className={cn (buttonVariants({ variant: "primary", size: "md" }))}
             
-            className={getButtonClasses("primary")}
           >
             Zur Startseite
           </Link>

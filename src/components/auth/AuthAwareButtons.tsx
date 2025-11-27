@@ -1,20 +1,20 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { createSPASassClient } from '@/lib/supabase/client';
 import Link from "next/link";
-import { Button, getButtonClasses } from '../ui/button';
+import { buttonVariants } from '../ui/button';
 import QLucideIcon from '../ui/LucideIcon';
+import { createClient } from '@/utils/supabase/client';
+import { cn } from '@/utils/utils';
 
-export default function AuthAwareButtons({ variant = 'full' }) {
+export default function AuthAwareButtons() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [loginOpen, setLoginOpen] = useState(false);
 
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const supabase = await createSPASassClient();
-                const { data: { user } } = await supabase.getSupabaseClient().auth.getUser();
+                const supabase = createClient();
+                const { data: { user } } = await supabase.auth.getUser();
                 setIsAuthenticated(!!user);
             } catch (error) {
                 console.error('Error checking auth status:', error);
@@ -30,7 +30,8 @@ export default function AuthAwareButtons({ variant = 'full' }) {
         // Skeleton placeholder to prevent layout shift
         return (
             <div
-                className={getButtonClasses('outline', variant === 'full' ? 'full' : 'md', "items-center justify-center sm:text-lg text-sm opacity-50 pointer-events-none")}
+                className={cn(buttonVariants({ variant: "outline", size: "md" }))}
+
             >
                 <QLucideIcon icon="User" className="mr-1 h-1 w-1 hidden sm:block" />
                 <span className="invisible">Anmelden</span>
@@ -42,27 +43,20 @@ export default function AuthAwareButtons({ variant = 'full' }) {
     return isAuthenticated ? (
         <Link
             href="/user"
-            className={
-                getButtonClasses('outline', variant === 'full' ? 'full' : 'md', " items-center justify-center sm:text-lg text-sm")
-            }
+
+            className={cn(buttonVariants({ variant: "primary", size: "md" }))}
 
         >
-            <QLucideIcon icon="LayoutDashboard" className="mr-1 h-1 w-1 hidden sm:block" />
-
             Dashboard
+
         </Link>
     ) : (
-        <>
-            <Button
-                onClick={() => setLoginOpen(true)}
-                className='items-center justify-center sm:text-base text-sm'
-                variant='outline'
-                size={variant === 'full' ? 'full' : 'md'}
-            >
-                <QLucideIcon icon="User" className="mr-1 h-1 w-1 hidden sm:block" />
-                Anmelden
-            </Button>
-        </>
+        <Link
+            href="/(auth)/login"
+            className={cn(buttonVariants({ variant: "outline", size: "md" }))}
+        >
+            Anmelden
+        </Link>
     );
 
 

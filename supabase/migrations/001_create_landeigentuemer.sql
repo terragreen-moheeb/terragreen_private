@@ -17,18 +17,52 @@ CREATE TABLE IF NOT EXISTS landeigentuemer (
 CREATE TABLE IF NOT EXISTS flurstuecke (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   landeigentuemer_id UUID NOT NULL REFERENCES landeigentuemer(id) ON DELETE CASCADE,
-  flurstueck_nummer VARCHAR(100) NOT NULL,
-  gemarkung VARCHAR(100),
-  flaeche_qm DECIMAL(12, 2),
-  nutzungsart VARCHAR(100),
+
+  -- Referenz zu geodata.flurstueck_brandenburg
+  fid INTEGER, -- Foreign key zu geodata.flurstueck_brandenburg
+  oid_ VARCHAR(100), -- DEBBAL630003R4ALFL
+
+  -- Flurstück-Identifikation
+  flstkennz VARCHAR(50), -- 12411000300152______
+  flstnrzae VARCHAR(20), -- Zähler: 152
+  flstnrnen VARCHAR(20), -- Nenner: kann null sein
+
+  -- Geografie
+  land VARCHAR(100), -- Brandenburg
+  landschl VARCHAR(10), -- 12
+  gemarkung VARCHAR(100), -- Garlitz
+  gemaschl VARCHAR(20), -- 124110
+  flur VARCHAR(50), -- Flur 003
+  flurschl VARCHAR(20), -- 124110003
+
+  -- Verwaltung
+  regbezirk VARCHAR(100),
+  regbezschl VARCHAR(20),
+  kreis VARCHAR(100), -- Havelland
+  kreisschl VARCHAR(20), -- 12063
+  gemeinde VARCHAR(100), -- Märkisch Luch
+  gmdschl VARCHAR(20), -- 12063186
+
+  -- Details
+  flaeche DECIMAL(12, 2), -- 8683 qm
+  lagebeztxt TEXT, -- Die Rühlaake
+  tntext TEXT, -- Nutzungsarten
+  aktualit VARCHAR(50), -- 2024-06-04Z
+
+  -- Custom
   bemerkungen TEXT,
+
   created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
-  UNIQUE(landeigentuemer_id, flurstueck_nummer)
+
+  -- Ein Flurstück (fid) kann nur einem Eigentümer zugeordnet sein
+  UNIQUE(fid)
 );
 
--- Index für bessere Performance
+-- Indices für bessere Performance
 CREATE INDEX IF NOT EXISTS idx_flurstuecke_landeigentuemer ON flurstuecke(landeigentuemer_id);
+CREATE INDEX IF NOT EXISTS idx_flurstuecke_fid ON flurstuecke(fid);
+CREATE INDEX IF NOT EXISTS idx_flurstuecke_zaehler_nenner ON flurstuecke(flstnrzae, flstnrnen, gemarkung);
 
 -- Funktion für automatisches Update von updated_at
 CREATE OR REPLACE FUNCTION update_updated_at_column()

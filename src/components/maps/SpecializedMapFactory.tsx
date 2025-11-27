@@ -1,19 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import { BaseMapCore, BaseMapCoreRef } from './BaseMapCore';
-import { MAP_CONFIGURATIONS } from '@/config/map_configuration';
+import { MAP_CONFIGURATIONS } from '@/config/MapConf';
 
 interface SpecializedMapProps {
   mapType: keyof typeof MAP_CONFIGURATIONS;
   activeLayers?: (keyof typeof MAP_CONFIGURATIONS)[];
   className?: string;
   attribution?: string;
+  onMapClick?: (lat: number, lon: number) => void;
 }
 
 export const SpecializedMap = React.forwardRef<BaseMapCoreRef, SpecializedMapProps>(({
   mapType,
   activeLayers,
   className = "",
-  attribution = '© OpenStreetMap contributors'
+  attribution = '© OpenStreetMap contributors',
+  onMapClick
 }, ref) => {
   const internalRef = useRef<BaseMapCoreRef>(null);
   const mapRef = (ref as React.RefObject<BaseMapCoreRef>) || internalRef;
@@ -60,6 +62,7 @@ export const SpecializedMap = React.forwardRef<BaseMapCoreRef, SpecializedMapPro
       ref={mapRef}
       className={className}
       attribution={attribution}
+      onClick={onMapClick}
     />
   );
 });

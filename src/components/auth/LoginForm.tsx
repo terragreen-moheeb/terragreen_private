@@ -2,14 +2,9 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { createSPASassClient } from '@/lib/supabase/client'
 import FormControl from '../forms/form_components/FormControl'
 import { Button } from '../ui/button'
-import QLucideIcon from '../ui/LucideIcon'
-
-type LoginFormProps = {
-  dialog?: boolean
-}
+import { createClient } from '@/utils/supabase/client'
 
 const validateEmail = (value: string): string => {
   if (!value) return 'Bitte gib eine E-Mail-Adresse ein.'
@@ -34,12 +29,11 @@ const translateAuthError = (message: string): string => {
   return translations[message] || 'Ein unbekannter Fehler ist aufgetreten.'
 }
 
-export default function LoginForm({ dialog = false }: LoginFormProps) {
+export default function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({ email: '', password: '', global: '' })
   const [loading, setLoading] = useState(false)
-  const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
 
   const clearErrors = () => setErrors({ email: '', password: '', global: '' })
@@ -58,8 +52,13 @@ export default function LoginForm({ dialog = false }: LoginFormProps) {
 
     setLoading(true)
     try {
-      const client = await createSPASassClient()
-      const { error: signInError } = await client.loginEmail(email, password)
+      const client = createClient();
+
+      // Supabase JS v2: use auth.signInWithPassword
+      const { error: signInError } = await client.auth.signInWithPassword({
+        email,
+        password
+      })
       if (signInError) throw signInError
       router.push('/user')
       // Loading bleibt true während Navigation

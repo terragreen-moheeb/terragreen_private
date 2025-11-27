@@ -72,7 +72,6 @@ export const BaseMapCore = forwardRef<BaseMapCoreRef, BaseMapCoreProps>(({
   center = { lat: 51.1427959255, lon: 10.5028269792 },
   zoom = 6,
   onClick,
-  className = "w-full h-[100vh]",
   style = { cursor: 'crosshair' },
   attribution = ''
 }, ref) => {

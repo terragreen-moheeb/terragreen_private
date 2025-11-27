@@ -26,11 +26,41 @@ export interface LandeigentuemerFormData {
 export interface Flurstueck {
   id: string;
   landeigentuemer_id: string;
-  flurstueck_nummer: string;
+
+  // Referenz zu geodata.flurstueck_brandenburg
+  fid?: number;
+  oid_?: string;
+
+  // Flurstück-Identifikation
+  flstkennz?: string;
+  flstnrzae?: string; // Zähler
+  flstnrnen?: string; // Nenner
+
+  // Geografie
+  land?: string;
+  landschl?: string;
   gemarkung?: string;
-  flaeche_qm?: number;
-  nutzungsart?: string;
+  gemaschl?: string;
+  flur?: string;
+  flurschl?: string;
+
+  // Verwaltung
+  regbezirk?: string;
+  regbezschl?: string;
+  kreis?: string;
+  kreisschl?: string;
+  gemeinde?: string;
+  gmdschl?: string;
+
+  // Details
+  flaeche?: number; // in qm
+  lagebeztxt?: string;
+  tntext?: string;
+  aktualit?: string;
+
+  // Custom
   bemerkungen?: string;
+
   created_at: string;
   updated_at: string;
 }

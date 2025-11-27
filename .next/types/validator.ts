@@ -47,34 +47,16 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
-// Validate ../../src/app/auth/confirm/page.tsx
+// Validate ../../src/app/(auth)/login/page.tsx
 {
-  const handler = {} as typeof import("../../src/app/auth/confirm/page.js")
-  handler satisfies AppPageConfig<"/auth/confirm">
+  const handler = {} as typeof import("../../src/app/(auth)/login/page.js")
+  handler satisfies AppPageConfig<"/login">
 }
 
-// Validate ../../src/app/auth/forgot-password/page.tsx
+// Validate ../../src/app/(auth)/logout/page.tsx
 {
-  const handler = {} as typeof import("../../src/app/auth/forgot-password/page.js")
-  handler satisfies AppPageConfig<"/auth/forgot-password">
-}
-
-// Validate ../../src/app/auth/login/page.tsx
-{
-  const handler = {} as typeof import("../../src/app/auth/login/page.js")
-  handler satisfies AppPageConfig<"/auth/login">
-}
-
-// Validate ../../src/app/auth/logout/page.tsx
-{
-  const handler = {} as typeof import("../../src/app/auth/logout/page.js")
-  handler satisfies AppPageConfig<"/auth/logout">
-}
-
-// Validate ../../src/app/auth/reset-password/page.tsx
-{
-  const handler = {} as typeof import("../../src/app/auth/reset-password/page.js")
-  handler satisfies AppPageConfig<"/auth/reset-password">
+  const handler = {} as typeof import("../../src/app/(auth)/logout/page.js")
+  handler satisfies AppPageConfig<"/logout">
 }
 
 // Validate ../../src/app/page.tsx
@@ -83,10 +65,34 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   handler satisfies AppPageConfig<"/">
 }
 
+// Validate ../../src/app/user/echtzeit-analysen/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/user/echtzeit-analysen/page.js")
+  handler satisfies AppPageConfig<"/user/echtzeit-analysen">
+}
+
+// Validate ../../src/app/user/landeigentuemer/[id]/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/user/landeigentuemer/[id]/page.js")
+  handler satisfies AppPageConfig<"/user/landeigentuemer/[id]">
+}
+
+// Validate ../../src/app/user/landeigentuemer/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/user/landeigentuemer/page.js")
+  handler satisfies AppPageConfig<"/user/landeigentuemer">
+}
+
 // Validate ../../src/app/user/page.tsx
 {
   const handler = {} as typeof import("../../src/app/user/page.js")
   handler satisfies AppPageConfig<"/user">
+}
+
+// Validate ../../src/app/api/analyze/route.ts
+{
+  const handler = {} as typeof import("../../src/app/api/analyze/route.js")
+  handler satisfies RouteHandlerConfig<"/api/analyze">
 }
 
 // Validate ../../src/app/api/auth/callback/route.ts
@@ -98,12 +104,6 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
-
-// Validate ../../src/app/auth/login/layout.tsx
-{
-  const handler = {} as typeof import("../../src/app/auth/login/layout.js")
-  handler satisfies LayoutConfig<"/auth/login">
-}
 
 // Validate ../../src/app/layout.tsx
 {

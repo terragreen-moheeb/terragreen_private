@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/moheebmaktabi/Desktop/Arbeit/Codebase/terragreen/src/app/user/page.tsx"],"sourcesContent":["\"use client\";\nimport React from 'react';\nimport { useGlobal } from '@/lib/context/GlobalContext';\nexport default function DashboardContent() {\n    const { user } = useGlobal();\n    return (\n        <div >\n            <h1 className='text-2xl font-semibold '>Willkommen, {user?.first_name ?? ''} {user?.last_name ?? ''}!</h1>\n        \n        </div>\n    );\n}"],"names":[],"mappings":";;;;;AAEA;AAFA;;;AAGe,SAAS;IACpB,MAAM,EAAE,IAAI,EAAE,GAAG,IAAA,oJAAS;IAC1B,qBACI,8OAAC;kBACG,cAAA,8OAAC;YAAG,WAAU;;gBAA0B;gBAAa,MAAM,cAAc;gBAAG;gBAAE,MAAM,aAAa;gBAAG;;;;;;;;;;;;AAIhH","debugId":null}}]
-}

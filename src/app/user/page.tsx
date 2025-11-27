@@ -1,74 +1,91 @@
 "use client";
-import React, { useState } from 'react';
-import { useGlobal } from '@/lib/context/GlobalContext';
-import { SpecializedMap } from '@/components/maps/SpecializedMapFactory';
-import { MAP_CONFIGURATIONS } from '@/config/map_configuration';
-
-type MapType = keyof typeof MAP_CONFIGURATIONS;
+import React from 'react';
+import Link from 'next/link';
+import { useGlobal } from '@/utils/supabase/context/GlobalContext';
+import QLucideIcon, { QLucideIconType } from '@/components/ui/LucideIcon';
+import { userMenuItems } from '@/config/UserMenuItems';
 
 export default function DashboardContent() {
     const { user } = useGlobal();
-    const [selectedLayers, setSelectedLayers] = useState<MapType[]>(['flood']);
-
-    const toggleLayer = (key: MapType) => {
-        setSelectedLayers(prev =>
-            prev.includes(key)
-                ? prev.filter(k => k !== key)
-                : [...prev, key]
-        );
-    };
 
     return (
-        <div className="h-screen flex">
-            {/* Sidebar mit Layer-Liste */}
-            <div className="w-52 p-4 border-r bg-gray-50 overflow-y-auto">
-                <h2 className="text-lg font-semibold mb-4">Echtzeitanalyse</h2>
-                <ul className="space-y-3">
-                    {Object.entries(MAP_CONFIGURATIONS).map(([key, config]) => (
-                        <li key={key}>
-                            <label className="flex items-center gap-3 rounded hover:bg-gray-100 cursor-pointer">
-                                <input
-                                    type="checkbox"
-                                    checked={selectedLayers.includes(key as MapType)}
-                                    onChange={() => toggleLayer(key as MapType)}
-                                    className="w-4 h-4 rounded"
-                                />
-                                {/* Farbbox nur für Layer mit einzelner Farbe (ohne Legende) */}
-                                {config.color && !config.legend && (
-                                    <span
-                                        className="w-4 h-4 rounded"
-                                        style={{ backgroundColor: config.color }}
-                                    />
-                                )}
-                                <span className="text-sm">{config.name}</span>
-                            </label>
+        <div className="min-h-screen bg-gray-50">
+            {/* Header */}
+            <div className="bg-white border-b border-gray-100">
+                <div className="max-w-6xl mx-auto px-6 py-10">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h1 className="text-2xl font-semibold text-gray-800">
+                                Hallo                                 {user?.first_name && user?.last_name ? `${user.first_name} ${user.last_name}` : 'Willkommen zurück'}
 
-                            {/* Legende - nur wenn Layer ausgewählt und Legende vorhanden */}
-                            {config.legend && selectedLayers.includes(key as MapType) && (
-                                <div className="ml-7 mt-2 space-y-1">
-                                    {config.legend.map(item => (
-                                        <div key={item.label} className="flex items-center gap-2">
-                                            <span
-                                                className="w-3 h-3 rounded border border-black"
-                                                style={{ backgroundColor: item.color, opacity: 0.7 }}
-                                            />
-                                            <span className="text-xs text-gray-600">{item.label}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </li>
-                    ))}
-                </ul>
+                            </h1>
+                            <p className="mt-1 text-sm text-gray-500">
+                                Schön, Sie wiederzusehen!
+                            </p>
+                        </div>
+                        <div className="text-right">
+                            <p className="text-xs text-gray-400 uppercase tracking-wide">Heute</p>
+                            <p className="text-sm font-medium text-gray-600 mt-0.5">
+                                {new Date().toLocaleDateString('de-DE', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric'
+                                })}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* Map */}
-            <div className="flex-1">
-                <SpecializedMap
-                    mapType="flood"
-                    activeLayers={selectedLayers}
-                    className="h-full w-full"
-                />
+            {/* Dashboard Cards */}
+            <div className="max-w-6xl mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {userMenuItems.map((item, index) => (
+                        <Link
+                            key={index}
+                            href={item.href}
+                            className="group"
+                        >
+                            <div className="relative bg-white rounded-lg border border-gray-200 p-6 hover:border-gray-300 hover:shadow-sm transition-all duration-200">
+                                {/* Icon */}
+                                <div className={`inline-flex items-center justify-center w-11 h-11 rounded-lg bg-${item.color}-50 mb-4`}>
+                                    <QLucideIcon
+                                        icon={item.icon as QLucideIconType}
+                                        size={22}
+                                        strokeWidth={1.5}
+                                        className={`text-${item.color}-600`}
+                                    />
+                                </div>
+
+                                {/* Title & Description */}
+                                <h3 className="text-lg font-medium text-gray-900 mb-1.5">
+                                    {item.title}
+                                </h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">
+                                    {item.description}
+                                </p>
+
+                                {/* Arrow Icon */}
+                                <div className="flex items-center mt-4 text-gray-400 group-hover:text-gray-600 transition-colors">
+                                    <span className="text-xs font-medium">Öffnen</span>
+                                    <svg
+                                        className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 transition-transform"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M9 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
             </div>
         </div>
     );

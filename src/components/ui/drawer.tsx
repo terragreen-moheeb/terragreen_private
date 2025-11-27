@@ -49,24 +49,24 @@ const Drawer: React.FC<DrawerProps> = ({ isOpen, onClose, title, children, foote
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between px-1 py-0.25 border-b">
-            <h2 className="text-3xl  text-black-base">{title}</h2>
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+            <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
             <button
               onClick={onClose}
-              className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+              className="p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-gray-100"
             >
-              <XMarkIcon className="w-2 h-2" />
+              <XMarkIcon className="w-5 h-5" />
             </button>
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-1">
+          <div className="flex-1 overflow-y-auto p-6">
             {children}
           </div>
 
           {/* Footer */}
           {footer && (
-            <div className="p-1 border-t bg-gray-50">
+            <div className="px-6 py-4 border-t border-gray-200 bg-gray-50">
               {footer}
             </div>
           )}
