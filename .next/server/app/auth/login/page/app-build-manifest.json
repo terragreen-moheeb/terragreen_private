@@ -1,0 +1,38 @@
+{
+  "pages": {
+    "/auth/login/page": [
+      "static/chunks/src_styles_global_e770e3d5.css",
+      "static/chunks/node_modules_next_dist_8db7fb1f._.js",
+      "static/chunks/src_app_layout_tsx_0a548d63._.js",
+      "static/chunks/node_modules_@supabase_node-fetch_browser_ebbd8575.js",
+      "static/chunks/node_modules_next_ebb85e08._.js",
+      "static/chunks/node_modules_@supabase_storage-js_dist_module_434fd12f._.js",
+      "static/chunks/node_modules_@supabase_auth-js_dist_module_e6c70351._.js",
+      "static/chunks/node_modules_lucide-react_dist_esm_icons_index_6b37bdeb.js",
+      "static/chunks/node_modules_lucide-react_dist_esm_icons_e76f5197._.js",
+      "static/chunks/node_modules_lucide-react_dist_esm_lucide-react_78492e78.js",
+      "static/chunks/node_modules_lucide-react_dist_esm_2ab1eb49._.js",
+      "static/chunks/node_modules_@lucide_lab_dist_esm_416e4918._.js",
+      "static/chunks/node_modules_ae6ab25f._.js",
+      "static/chunks/src_f54b7c58._.js",
+      "static/chunks/src_app_not-found_tsx_d6e0f9e5._.js",
+      "static/chunks/node_modules_next_dist_client_components_builtin_global-error_d6e0f9e5.js",
+      "static/chunks/node_modules_@supabase_node-fetch_browser_ebbd8575.js",
+      "static/chunks/node_modules_e7c9ab58._.js",
+      "static/chunks/src_lib_1fad1928._.js",
+      "static/chunks/src_app_auth_login_layout_tsx_d6e0f9e5._.js",
+      "static/chunks/node_modules_b993e6fd._.js",
+      "static/chunks/src_90a3366f._.js",
+      "static/chunks/src_app_auth_login_page_tsx_533e5d79._.js",
+      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_57d40746._.js",
+      "static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js",
+      "static/chunks/node_modules_next_dist_compiled_next-devtools_index_a9cb0712.js",
+      "static/chunks/node_modules_next_dist_compiled_5150ccfd._.js",
+      "static/chunks/node_modules_next_dist_client_cf1d9188._.js",
+      "static/chunks/node_modules_next_dist_b0daae9a._.js",
+      "static/chunks/node_modules_@swc_helpers_cjs_b3dc30d6._.js",
+      "static/chunks/_a0ff3932._.js",
+      "static/chunks/turbopack-_cdba956c._.js"
+    ]
+  }
+}

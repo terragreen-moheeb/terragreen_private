@@ -1,0 +1,233 @@
+
+@font-face {
+  font-family: 'SpaceGrotesk';
+  src: url('/fonts/spacegrotesk.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CrimsonItalic';
+  src: url('/fonts/CrimsonText-Italic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'CrimsonRegular';
+  src: url('/fonts/CrimsonText-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+html {
+  font-size: 16px;
+  /* 1rem = 16px */
+}
+
+:root {
+  /* Color scheme variables */
+  --color-base-white: #FCFFFF;
+  --color-base-black: #131D25;
+
+
+  /* Primary colors */
+  --color-primary-50: #F5FAFF;
+  --color-primary-100: #E9F2FF;
+  --color-primary-200: #D1E3FF;
+  --color-primary-300: #BDD2FF;
+  --color-primary-400: #7AA5FF;
+  --color-primary-500: #0051FF;
+  --color-primary-600: #0046DB;
+  --color-primary-700: #003AB8;
+  --color-primary-800: #003AB8;
+  --color-primary-900: #00296E;
+
+  /* sec colors */
+  --color-sec-50: #F9FAFB;
+  --color-sec-100: #E8EBEE;
+  --color-sec-200: #CACFD3;
+  --color-sec-300: #AEB3B7;
+  --color-sec-400: #9B9C9D;
+  --color-sec-500: #828282;
+  --color-sec-600: #696969;
+  --color-sec-700: #4F4F4F;
+  --color-sec-800: #383838;
+  --color-sec-900: #242424;
+
+
+  /* Error Colors */
+  --color-error-50: #FFF2F2;
+  --color-error-100: #FFE3E3;
+  --color-error-200: #FABDBD;
+  --color-error-300: #FF8685;
+  --color-error-400: #D96262;
+  --color-error-500: #A84747;
+  --color-error-600: #8F3C3C;
+  --color-error-700: #803737;
+  --color-error-800: #5C2727;
+  --color-error-900: #361717;
+
+  /* Success Colors */
+  --color-success-50: #EFFFF7;
+  --color-success-100: #E7FFF0;
+  --color-success-200: #BFFFD9;
+  --color-success-300: #80FFB4;
+  --color-success-400: #66CC90;
+  --color-success-500: #49A66F;
+  --color-success-600: #3A7A54;
+  --color-success-700: #2E6147;
+  --color-success-800: #224733;
+  --color-success-900: #162E21;
+
+
+  /* Warning Colors */
+  --color-warning-50: #FFFCED;
+  --color-warning-100: #FFFAD6;
+  --color-warning-200: #FFF6B1;
+  --color-warning-300: #FFEF80;
+  --color-warning-400: #EDD86F;
+  --color-warning-500: #DECD59;
+  --color-warning-600: #AEA24D;
+  --color-warning-700: #7A7236;
+  --color-warning-800: #5E5726;
+  --color-warning-900: #3B3618;
+
+
+
+  /* Notification colors */
+  --color-notification-50: #F5FAFF;
+  --color-notification-100: #E2F8FE;
+  --color-notification-200: #80F4FF;
+  --color-notification-300: #80F4FF;
+  --color-notification-400: #3ED1E5;
+  --color-notification-500: #40ACBF;
+  --color-notification-600: #3A98B0;
+  --color-notification-700: #356879;
+  --color-notification-800: #2A4855;
+  --color-notification-900: #1A2A32;
+
+
+  --space-base: 16px;
+
+  --global-radius-sm: 0.5rem;
+  --global-radius-md: 1rem;
+  --global-radius-lg: 1.5rem;
+
+
+
+
+
+
+
+
+  --color-gray-50: #F9F9F9;
+
+  --form-border-color: #dbdbdb;
+  --form-border-color-focus: #a0a0a0;
+  --form-bg-color: #F8F8F8;
+  --error-color: #FE5F5566;
+  --correct-color: #cae7be46;
+  --color-black-text: #2E2E2E;
+
+  /* Schriftarten */
+  --font-space-grotesk: "SpaceGrotesk", system-ui, -apple-system, sans-serif;
+  --font-crimson-italic: "CrimsonItalic", Georgia, serif;
+  --font-crimson-regular: "CrimsonRegular", Georgia, serif;
+  
+  /* Legacy-Variablen (für Rückwärtskompatibilität) */
+  --title-font-family: var(--font-space-grotesk);
+  --body-font-family: var(--font-space-grotesk);
+  --color-grey-text: #9C9C9C;
+  --color-white-text: #ffffff;
+  --text-red: red;
+  --building_bg_gradient_v1: #FFFEFC;
+
+  --text-primary: #2E2E2E;
+  --text-sec: #4C4B49;
+  --text-muted: #7F7E79;
+  --text-inverse: #FFFFFF;
+
+  --max-width-layout: 92%;
+  --radius: 30px;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --sec: 0 0% 96.1%;
+    --sec-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --sec: 0 0% 14.9%;
+    --sec-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+/* layer Styles */
+
+
+@layer components {
+  .front-layout {
+    @apply max-w-full md:max-w-[90%] 2xl:max-w-[1440px] mx-auto px-1 md:px-0;
+  }
+
+  .section-padding-front {
+    @apply sm:py-8 py-3;
+  }
+  .section-space-front {
+    @apply sm:space-y-8 space-y-3;
+  }
+
+}
