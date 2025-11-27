@@ -30,7 +30,7 @@ export default function LoginPage() {
     }
 
     return (
-        <AuthLayout rightImageSrc='/images/auth/immo1.webp'>
+        <AuthLayout rightImageSrc='/background-login.webp'>
             <LoginForm />
         </AuthLayout>
     );

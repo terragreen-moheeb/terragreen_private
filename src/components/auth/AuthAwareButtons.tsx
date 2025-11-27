@@ -52,7 +52,7 @@ export default function AuthAwareButtons() {
         </Link>
     ) : (
         <Link
-            href="/(auth)/login"
+            href="/login"
             className={cn(buttonVariants({ variant: "outline", size: "md" }))}
         >
             Anmelden
