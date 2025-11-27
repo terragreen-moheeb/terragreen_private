@@ -61,7 +61,7 @@ export default function Header({ fixed = true }: HeaderProps) {
 
                         {/* Auth Buttons */}
                         <div className="flex items-center gap-1">
-                            <AuthAwareButtons variant="nav" />
+                            <AuthAwareButtons />
 
                         </div>
                     </div></div>

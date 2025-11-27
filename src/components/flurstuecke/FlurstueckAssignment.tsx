@@ -146,7 +146,8 @@ export const FlurstueckAssignment = ({
                 </h4>
                 <div className="space-y-2">
                   {failures.map(({ flurstueck, error }) => {
-                    const isDuplicate = error?.code === '23505' || error?.message?.includes('duplicate');
+                    const errorWithCode = error as Error & { code?: string };
+                    const isDuplicate = errorWithCode?.code === '23505' || error?.message?.includes('duplicate');
                     const errorMessage = isDuplicate
                       ? 'Bereits zugeordnet'
                       : 'Fehler beim Zuordnen';
