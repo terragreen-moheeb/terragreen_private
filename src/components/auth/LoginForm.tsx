@@ -106,8 +106,8 @@ export default function LoginForm() {
             <Button
               type="submit"
               disabled={loading}
-              variant={loading ? "disabled" : "primary"}
-              size={'full'}
+              variant="primary"
+              className="w-full"
             >
               Weiter
             </Button>
