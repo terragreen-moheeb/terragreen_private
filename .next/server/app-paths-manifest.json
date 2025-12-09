@@ -2,6 +2,10 @@
   "/(auth)/login/page": "app/(auth)/login/page.js",
   "/(auth)/logout/page": "app/(auth)/logout/page.js",
   "/_not-found/page": "app/_not-found/page.js",
+  "/api/analyze/route": "app/api/analyze/route.js",
   "/page": "app/page.js",
+  "/user/echtzeit-analysen/page": "app/user/echtzeit-analysen/page.js",
+  "/user/landeigentuemer/[id]/page": "app/user/landeigentuemer/[id]/page.js",
+  "/user/landeigentuemer/page": "app/user/landeigentuemer/page.js",
   "/user/page": "app/user/page.js"
 }
