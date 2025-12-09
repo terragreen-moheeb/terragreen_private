@@ -12,7 +12,7 @@ export default function AuthLayout({
                 <div className="hidden lg:flex lg:w-[80%] relative">
                 <Image
                     src={rightImageSrc || '/images/auth/immo1.webp'}
-                    alt="Login Hintergrund"
+                     alt="Login Hintergrund"
                     fill
                     priority
                     draggable={false}
