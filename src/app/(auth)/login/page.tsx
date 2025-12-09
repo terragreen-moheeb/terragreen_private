@@ -30,7 +30,7 @@ export default function LoginPage() {
     }
 
     return (
-        <AuthLayout rightImageSrc='/background-login.webp'>
+        <AuthLayout >
             <LoginForm />
         </AuthLayout>
     );

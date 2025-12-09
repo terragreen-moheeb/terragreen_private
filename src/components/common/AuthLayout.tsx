@@ -2,33 +2,46 @@ import Image from 'next/image';
 
 export default function AuthLayout({
     children,
-    rightImageSrc = '/images/auth/immo1.webp',
+    image = '/login-bg.webp',
 }: {
     children: React.ReactNode;
-    rightImageSrc?: string;
+    image?: string;
 }) {
     return (
-        <div className="flex min-h-screen">
-                <div className="hidden lg:flex lg:w-[80%] relative">
+        <div className="relative flex min-h-screen">
+            {/* Hintergrundbild - Fullscreen */}
+            <div className="absolute inset-0 w-full h-full">
                 <Image
-                    src={rightImageSrc || '/images/auth/immo1.webp'}
-                     alt="Login Hintergrund"
+                    src={image}
+                    alt="Login Hintergrund"
                     fill
                     priority
                     draggable={false}
-
                     className="object-cover object-center"
                 />
+                {/* Overlay für bessere Lesbarkeit */}
+                <div className="absolute inset-0 bg-black/20" />
             </div>
-            <div className="w-full lg:w-[40%] flex flex-col justify-center py-4 px-2 sm:px-2 lg:px-3 bg-white ">
 
+            {/* Logo oben links */}
+            <div className="absolute top-8 left-8 z-20">
+                <Image
+                    src="/logo.svg"
+                    alt="TerraGreen Logo"
+                    width={160}
+                    height={64}
+                    priority
+                    draggable={false}
+                    className="drop-shadow-2xl"
+                />
+            </div>
 
-                <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-xl">
+            {/* Content - Zentriert mit Backdrop */}
+            <div className="relative z-10 w-full flex items-center justify-center min-h-screen px-4 py-12">
+                <div className="w-full max-w-md bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
                     {children}
                 </div>
             </div>
-
-        
         </div>
     );
 }

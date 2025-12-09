@@ -9,11 +9,11 @@ import Drawer from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import QLucideIcon from '@/components/ui/LucideIcon';
-import AppLayout from '@/components/common/AppLayout';
 
 export default function LandeigentuemerPage() {
   const [landeigentuemer, setLandeigentuemer] = useState<Landeigentuemer[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -25,11 +25,15 @@ export default function LandeigentuemerPage() {
   const loadLandeigentuemer = async () => {
     try {
       setIsLoading(true);
+      setError(null);
+      console.log('Lade Landeigentümer...');
       const data = await landeigentuemerService.getAll();
+      console.log('Erfolgreich geladen:', data);
       setLandeigentuemer(data);
     } catch (error) {
       console.error('Fehler beim Laden der Landeigentümer:', error);
-      alert('Fehler beim Laden der Daten. Bitte versuchen Sie es erneut.');
+      const errorMessage = error instanceof Error ? error.message : 'Unbekannter Fehler';
+      setError(`Fehler beim Laden: ${errorMessage}`);
     } finally {
       setIsLoading(false);
     }
@@ -88,7 +92,6 @@ export default function LandeigentuemerPage() {
     : undefined;
 
   return (
-  <AppLayout > 
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
@@ -117,6 +120,16 @@ export default function LandeigentuemerPage() {
           <div className="flex justify-center items-center py-12">
             <LoadingSpinner />
           </div>
+        ) : error ? (
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+            <QLucideIcon icon="AlertCircle" size={48} className="mx-auto text-red-500 mb-3" strokeWidth={1.5} />
+            <h3 className="text-lg font-semibold text-red-900 mb-2">Fehler beim Laden</h3>
+            <p className="text-sm text-red-700 mb-4">{error}</p>
+            <Button variant="primary" size="sm" onClick={loadLandeigentuemer}>
+              <QLucideIcon icon="RefreshCw" size={16} className="mr-2" />
+              Erneut versuchen
+            </Button>
+          </div>
         ) : (
           <LandeigentuemerList
             landeigentuemer={landeigentuemer}
@@ -139,6 +152,6 @@ export default function LandeigentuemerPage() {
           />
         </Drawer>
       </div>
-    </div></AppLayout>
+    </div>
   );
 }

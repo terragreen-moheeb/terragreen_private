@@ -72,48 +72,51 @@ export default function LoginForm() {
 
 
   return (
-    <>
-  
-
-      <div className="py-1 ">
-           <form noValidate onSubmit={handlePasswordSubmit} className="space-y-3 ">
-            <FormControl
-              type="email"
-              label="E-Mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Deine E-Mail-Adresse"
-              required
-              error={errors.email}
-            />
-
-            <FormControl
-              type="password"
-              label="Passwort"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-              required
-              error={errors.password}
-            />
-
-            {errors.global && (
-              <div className="p-1 text-sm text-error-600 bg-error-100 rounded">
-                {errors.global}
-              </div>
-            )}
-
-            <Button
-              type="submit"
-              disabled={loading}
-              variant="primary"
-              className="w-full"
-            >
-              Weiter
-            </Button>
-
-          </form>
+    <div className="space-y-6">
+      <div className="text-center">
+        <h1 className="text-3xl font-bold text-gray-50">Willkommen zurück</h1>
+        <p className="mt-2 text-sm text-gray-100">Melde dich mit deinem Account an</p>
       </div>
-    </>
+
+      <form noValidate onSubmit={handlePasswordSubmit} className="space-y-5">
+        <FormControl
+          type="email"
+          label="E-Mail"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Deine E-Mail-Adresse"
+          required
+          error={errors.email}
+          labelClassName="text-gray-200"
+        />
+
+        <FormControl
+          type="password"
+          label="Passwort"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="••••••••"
+          required
+          error={errors.password}
+          labelClassName="text-gray-200"
+        />
+
+        {errors.global && (
+          <div className="p-3.5 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl">
+            {errors.global}
+          </div>
+        )}
+
+        <Button
+          type="submit"
+          disabled={loading}
+          variant="primary"
+          size="lg"
+          className="w-full text-base font-semibold"
+        >
+          Anmelden
+        </Button>
+      </form>
+    </div>
   )
 }

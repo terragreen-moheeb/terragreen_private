@@ -1,5 +1,12 @@
 
 export const userMenuItems = [
+      {
+        title: "Dashboard",
+        description: "Übersicht über Ihre Aktivitäten und Statistiken",
+        icon: "LayoutDashboard",
+        href: "user",
+        color: "green",
+    },
     {
         title: "Landeigentümer",
         description: "Verwalten Sie Landeigentümer und Flurstücke",
