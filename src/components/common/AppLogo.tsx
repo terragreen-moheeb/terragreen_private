@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import QLucideIcon from '@/components/ui/LucideIcon';
+import Image from 'next/image';
 
 interface AppLogoProps {
   showIcon?: boolean;
@@ -9,13 +10,21 @@ interface AppLogoProps {
 
 export const AppLogo = ({ showIcon = true }: AppLogoProps) => {
   return (
-    <Link href="/user" className="flex items-center gap-2">
-      {showIcon && (
-        <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
-          <QLucideIcon icon="Sprout" size={20} strokeWidth={2} className="text-white" />
-        </div>
-      )}
-      <span className="text-lg font-semibold text-gray-900">TerraGreen</span>
+    <Link href="/user/dashboard" className="flex items-center gap-2">
+    
+
+      {/* Logo */}
+      <div className="flex items-center">
+        <Image
+          src="/logo.svg"
+          alt="Logo"
+          width={144}
+          height={58}
+          className="w-[114px] object-contain"
+          draggable={false}
+        />
+      </div>
+
     </Link>
   );
 };

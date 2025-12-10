@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///Users/moheebmaktabi/Desktop/Arbeit/Codebase/terragreen/src/app/page.tsx"],"sourcesContent":["import React from 'react';\nimport Header from '@/components/common/Header';\n\nexport default function LandingPage() {\n\n  return (\n    <>\n      <div itemScope itemType=\"https://schema.org/WebPage\">\n        <Header />\n        <main role=\"main\">\n         \n        </main>\n\n      </div>\n    </>\n  );\n}"],"names":[],"mappings":";;;;;AACA;;;AAEe,SAAS;IAEtB,qBACE;kBACE,cAAA,8OAAC;YAAI,SAAS;YAAC,UAAS;;8BACtB,8OAAC,iJAAM;;;;;8BACP,8OAAC;oBAAK,MAAK;;;;;;;;;;;;;AAOnB","debugId":null}}]
-}

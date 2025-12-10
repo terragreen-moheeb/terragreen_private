@@ -23,7 +23,7 @@ export default function AuthAwareButtons() {
     // Navigation buttons for the header
     return user ? (
         <Link
-            href="/user"
+            href="/user/dashboard"
             className={cn(buttonVariants({ variant: "primary", size: "md" }))}
         >
             Dashboard

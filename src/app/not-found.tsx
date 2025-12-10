@@ -17,12 +17,12 @@ export default function NotFound() {
             Die gesuchte Seite konnte leider nicht gefunden werden.
           </p>
         </div>
-        
+
         <div className="space-y-1">
           <Link
             href="/"
-                    className={cn (buttonVariants({ variant: "primary", size: "md" }))}
-            
+            className={cn(buttonVariants({ variant: "primary", size: "md" }))}
+
           >
             Zur Startseite
           </Link>

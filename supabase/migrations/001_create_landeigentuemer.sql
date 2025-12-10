@@ -92,26 +92,34 @@ ALTER TABLE landeigentuemer ENABLE ROW LEVEL SECURITY;
 ALTER TABLE flurstuecke ENABLE ROW LEVEL SECURITY;
 
 -- Policies (für authenticated users - anpassen nach Bedarf)
+DROP POLICY IF EXISTS "Enable read access for authenticated users" ON landeigentuemer;
 CREATE POLICY "Enable read access for authenticated users" ON landeigentuemer
-  FOR SELECT USING (auth.role() = 'authenticated');
+  FOR SELECT USING (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable insert access for authenticated users" ON landeigentuemer;
 CREATE POLICY "Enable insert access for authenticated users" ON landeigentuemer
-  FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable update access for authenticated users" ON landeigentuemer;
 CREATE POLICY "Enable update access for authenticated users" ON landeigentuemer
-  FOR UPDATE USING (auth.role() = 'authenticated');
+  FOR UPDATE USING (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable delete access for authenticated users" ON landeigentuemer;
 CREATE POLICY "Enable delete access for authenticated users" ON landeigentuemer
-  FOR DELETE USING (auth.role() = 'authenticated');
+  FOR DELETE USING (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable read access for authenticated users" ON flurstuecke;
 CREATE POLICY "Enable read access for authenticated users" ON flurstuecke
-  FOR SELECT USING (auth.role() = 'authenticated');
+  FOR SELECT USING (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable insert access for authenticated users" ON flurstuecke;
 CREATE POLICY "Enable insert access for authenticated users" ON flurstuecke
-  FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable update access for authenticated users" ON flurstuecke;
 CREATE POLICY "Enable update access for authenticated users" ON flurstuecke
-  FOR UPDATE USING (auth.role() = 'authenticated');
+  FOR UPDATE USING (auth.uid() IS NOT NULL);
 
+DROP POLICY IF EXISTS "Enable delete access for authenticated users" ON flurstuecke;
 CREATE POLICY "Enable delete access for authenticated users" ON flurstuecke
-  FOR DELETE USING (auth.role() = 'authenticated');
+  FOR DELETE USING (auth.uid() IS NOT NULL);

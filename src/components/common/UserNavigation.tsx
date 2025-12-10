@@ -34,7 +34,7 @@ export const UserNavigation = ({ onLinkClick, isCollapsed = false }: UserNavigat
             isCollapsed ? "px-3 justify-center" : "px-3",
             isActive(item.href)
               ? 'bg-primary-50 text-primary-700'
-              : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+              : 'text-gray-700 '
           )}
           title={isCollapsed ? item.title : undefined}
         >
@@ -46,14 +46,17 @@ export const UserNavigation = ({ onLinkClick, isCollapsed = false }: UserNavigat
               "transition-colors",
               isActive(item.href) ? "text-primary-700" : "text-gray-600 group-hover:text-gray-900"
             )}
-          />
+          />  
+            <div className="absolute left-full  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
+              <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-primary-500" />
+            </div>
+       
           {!isCollapsed && <span className="truncate">{item.title}</span>}
 
           {/* Tooltip für collapsed state */}
           {isCollapsed && (
             <div className="absolute left-full ml-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 whitespace-nowrap z-50 pointer-events-none">
               {item.title}
-              <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-primary-500" />
             </div>
           )}
         </Link>

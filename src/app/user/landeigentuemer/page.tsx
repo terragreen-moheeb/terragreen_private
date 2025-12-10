@@ -9,6 +9,7 @@ import Drawer from '@/components/ui/drawer';
 import { Button } from '@/components/ui/button';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import QLucideIcon from '@/components/ui/LucideIcon';
+import AppLayout from '@/components/common/AppLayout';
 
 export default function LandeigentuemerPage() {
   const [landeigentuemer, setLandeigentuemer] = useState<Landeigentuemer[]>([]);
@@ -91,7 +92,7 @@ export default function LandeigentuemerPage() {
     ? landeigentuemer.find((le) => le.id === editingId)
     : undefined;
 
-  return (
+  return (     <AppLayout>
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Header */}
@@ -152,6 +153,6 @@ export default function LandeigentuemerPage() {
           />
         </Drawer>
       </div>
-    </div>
+    </div>  </AppLayout>
   );
 }

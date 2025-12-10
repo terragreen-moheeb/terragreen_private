@@ -16,7 +16,8 @@ export default function LandingPage() {
     }
   }, [user, loading, router]);
 
-  if (loading) {
+  // Zeige Loading während loading oder wenn kein User (wird weitergeleitet)
+  if (loading || !user) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <LoadingSpinner />
@@ -24,10 +25,7 @@ export default function LandingPage() {
     );
   }
 
-  if (!user) {
-    return null;
-  }
-
+  // Nur wenn User eingeloggt ist, zeige Seite
   return (
     <>
       <div itemScope itemType="https://schema.org/WebPage">

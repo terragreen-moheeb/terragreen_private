@@ -5,12 +5,33 @@ export const landeigentuemerService = {
   // Alle Landeigentümer abrufen
   async getAll(): Promise<Landeigentuemer[]> {
     const supabase = createClient();
-    const { data, error } = await supabase
+    console.log('Supabase Client erstellt, starte Abfrage...');
+
+    // Timeout-Promise
+    const timeoutPromise = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('Query Timeout nach 10 Sekunden')), 10000)
+    );
+
+    // Query-Promise
+    const queryPromise = supabase
       .from('landeigentuemer')
       .select('*')
       .order('nachname', { ascending: true });
 
-    if (error) throw error;
+    // Race zwischen Query und Timeout
+    const { data, error } = await Promise.race([queryPromise, timeoutPromise]);
+
+    if (error) {
+      console.error('Supabase Fehler:', {
+        message: error.message,
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+      });
+      throw new Error(`Datenbankfehler: ${error.message} (Code: ${error.code})`);
+    }
+
+    console.log('Daten erfolgreich abgerufen:', data);
     return (data || []) as Landeigentuemer[];
   },
 

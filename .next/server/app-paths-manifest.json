@@ -1,1 +1,14 @@
-{}
+{
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(auth)/logout/page": "app/(auth)/logout/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/user/dashboard/page": "app/user/dashboard/page.js",
+  "/user/organisationen/[id]/page": "app/user/organisationen/[id]/page.js",
+  "/user/organisationen/page": "app/user/organisationen/page.js",
+  "/user/organisations/[id]/page": "app/user/organisations/[id]/page.js",
+  "/user/organisations/new/page": "app/user/organisations/new/page.js",
+  "/user/organisations/organisation/[id]/page": "app/user/organisations/organisation/[id]/page.js",
+  "/user/organisations/page": "app/user/organisations/page.js",
+  "/user/page": "app/user/page.js"
+}

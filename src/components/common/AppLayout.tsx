@@ -9,8 +9,15 @@ import { cn } from '@/utils/utils';
 
 export default function AppLayout({
   children,
+  label,
+  description,
+headerContent
 }: Readonly<{
   children: React.ReactNode;
+  label?: string;
+  description?: string;
+    headerContent?: React.ReactNode;
+
 }>) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -91,6 +98,27 @@ export default function AppLayout({
         )}
       >
         <main className="pt-16 lg:pt-0">
+          <div className='bg-color py-5 '>
+            <div className='app-layout flex items-start justify-between border-b border-gray-200 pb-2 '>
+              <div>
+                {label && (
+                  <h1 className='text-black text-2xl font-semibold '>
+                    {label}
+                  </h1>
+                )}
+                {description && (
+                  <p className='text-sec-500 mt-1 text-sm'>
+                    {description}
+                  </p>
+                )}
+              </div>
+              <div className='flex gap-3'>
+                {headerContent}
+              </div>
+            </div>
+
+
+          </div>
           {children}
         </main>
       </div>

@@ -55,15 +55,29 @@ export default function LoginForm() {
       const client = createClient();
 
       // Supabase JS v2: use auth.signInWithPassword
-      const { error: signInError } = await client.auth.signInWithPassword({
+      const { data, error: signInError } = await client.auth.signInWithPassword({
         email,
         password
       })
-      if (signInError) throw signInError
-      router.push('/user')
+
+      if (signInError) {
+        console.error('Login error:', signInError)
+        throw signInError
+      }
+
+      if (!data.session) {
+        throw new Error('No session created')
+      }
+
+      // Warte kurz, damit der onAuthStateChange event gefeuert wird
+      await new Promise(resolve => setTimeout(resolve, 100))
+
+      // Redirect zu /user/dashboard nach erfolgreichem Login
+      router.push('/user/dashboard')
       // Loading bleibt true während Navigation
     } catch (err) {
-      const message = err instanceof Error ? err.message : ''
+      console.error('Login failed:', err)
+      const message = err instanceof Error ? err.message : 'Login failed'
       setErrors(prev => ({ ...prev, global: translateAuthError(message) }))
       setLoading(false)
     }
@@ -75,7 +89,7 @@ export default function LoginForm() {
     <div className="space-y-6">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-gray-50">Willkommen zurück</h1>
-        <p className="mt-2 text-sm text-gray-100">Melde dich mit deinem Account an</p>
+        <p className="mt-2 text-sm text-gray-100">Melde dich mit deinem Konto an</p>
       </div>
 
       <form noValidate onSubmit={handlePasswordSubmit} className="space-y-5">
